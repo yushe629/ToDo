@@ -7,7 +7,9 @@ interface Todo {
   complete: boolean;
 }
 
-class CreateTodoFierld extends React.Component {
+class CreateTodoField extends React.Component<{
+  onTodoAdd: (todo: Todo) => void;
+}> {
   state = {
     inputData: "",
   };
@@ -22,31 +24,56 @@ class CreateTodoFierld extends React.Component {
           }}
         />
         <p>あなたは{this.state.inputData}と入力しました。</p>
-        <button onClick={() => null}>追加</button>
+        <button
+          onClick={() => {
+            this.props.onTodoAdd({
+              id: Math.floor(Math.random() * 100),
+              task: this.state.inputData,
+              complete: false,
+            });
+          }}
+        >
+          追加
+        </button>
       </div>
     );
   }
 }
 
 class TodoList extends React.Component {
-  task1 = {
-    id: 1,
-    task: "初めてのタスク",
-    achieve: true,
+  state = {
+    todos: [
+      {
+        id: 1,
+        task: "初めてのタスク",
+        achieve: true,
+      },
+
+      {
+        id: 2,
+        task: "2つめのタスク",
+        achieve: true,
+      },
+    ],
   };
-
-  task2 = {
-    id: 2,
-    task: "2つめのタスク",
-    achieve: true,
-  };
-
-  tasks = [this.task1, this.task2];
-
   render() {
     return (
       <div>
-        <p>{this.tasks.map((x) => x.task)}</p>
+        <CreateTodoField
+          onTodoAdd={(todo) => {
+            this.setState({
+              todos: [...this.state.todos, todo],
+            });
+          }}
+        />
+        <p>
+          {" "}
+          <ul>
+            {this.state.todos.map((todo) => (
+              <li key={todo.id}>{todo.task}</li>
+            ))}
+          </ul>
+        </p>
       </div>
     );
   }
@@ -54,12 +81,7 @@ class TodoList extends React.Component {
 
 class App extends React.Component {
   render() {
-    return (
-      <>
-        <CreateTodoFierld />
-        <TodoList />
-      </>
-    );
+    return <TodoList />;
   }
 }
 export default App;
