@@ -1,6 +1,12 @@
 import React from "react";
 import "./App.css";
-import CreateTodoFierld from "./CreateTodoField";
+
+class CreateTodoFierld extends React.Component {
+  constructor(props: string) {
+    super(props);
+  }
+}
+class TodoList extends React.Component {}
 
 class App extends React.Component {
   render() {
