@@ -11,6 +11,7 @@ class CreateTodoFierld extends React.Component {
   state = {
     inputData: "",
   };
+
   render() {
     return (
       <div>
@@ -21,6 +22,7 @@ class CreateTodoFierld extends React.Component {
           }}
         />
         <p>あなたは{this.state.inputData}と入力しました。</p>
+        <button onClick={() => null}>追加</button>
       </div>
     );
   }
@@ -44,7 +46,7 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.tasks.map((x) => console.log(x.task))}</p>
+        <p>{this.tasks.map((x) => x.task)}</p>
       </div>
     );
   }
