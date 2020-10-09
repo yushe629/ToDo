@@ -1,6 +1,12 @@
 import React from "react";
 import "./App.css";
 
+interface Todo {
+  id: number;
+  task: string;
+  complete: boolean;
+}
+
 class CreateTodoFierld extends React.Component {
   state = {
     inputData: "",
@@ -36,7 +42,11 @@ class TodoList extends React.Component {
   tasks = [this.task1, this.task2];
 
   render() {
-    return <div>{this.tasks.map((x) => console.log(x.task))}</div>;
+    return (
+      <div>
+        <p>{this.tasks.map((x) => console.log(x.task))}</p>
+      </div>
+    );
   }
 }
 
