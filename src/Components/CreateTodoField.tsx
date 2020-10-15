@@ -4,6 +4,7 @@ import Todo from "./Tasktype";
 
 class CreateTodoField extends React.Component<{
   onTodoAdd: (todo: Todo) => void;
+  count: number;
 }> {
   state = {
     inputData: "",
@@ -21,9 +22,8 @@ class CreateTodoField extends React.Component<{
         />
         <button
           onClick={() => {
-            this.setState({ count: this.state.count++ });
             this.props.onTodoAdd({
-              id: this.state.count,
+              id: this.props.count,
               task: this.state.inputData,
               complete: false,
             });

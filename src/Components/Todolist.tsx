@@ -21,6 +21,11 @@ class TodoList extends React.Component {
   };
 
   delete(todo: Todo) {
+    this.setState({
+      todos: this.state.todos.filter((x) => {
+        x.id !== todo.id;
+      }),
+    });
     return 0;
   }
 
@@ -28,6 +33,7 @@ class TodoList extends React.Component {
     return (
       <div>
         <CreateTodoField
+          count={this.state.todos.length}
           onTodoAdd={(todo) => {
             this.setState({
               todos: [...this.state.todos, todo],
