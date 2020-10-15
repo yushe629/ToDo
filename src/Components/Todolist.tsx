@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import Todo from "./Tasktype";
 import CreateTodoField from "./CreateTodoField";
+import EditTask from "./EditTask";
 
 class TodoList extends React.Component {
   state = {
@@ -9,13 +10,13 @@ class TodoList extends React.Component {
       {
         id: 1,
         task: "初めてのタスク",
-        complete: true,
+        complete: false,
       },
 
       {
         id: 2,
         task: "2つめのタスク",
-        complete: true,
+        complete: false,
       },
     ],
   };
@@ -41,12 +42,23 @@ class TodoList extends React.Component {
           }}
         />
         <p>
-          {" "}
           <ul>
             {this.state.todos.map((todo) => (
               <li key={todo.id}>
                 {todo.task}
-                <button key={todo.id} onClick={() => {}}>
+                <button
+                  key={todo.id}
+                  onClick={() => {
+                    <EditTask
+                      index={todo.id}
+                      onTodoEdit={(todo) => {
+                        this.setState({
+                          todos: [...this.state.todos, todo],
+                        });
+                      }}
+                    />;
+                  }}
+                >
                   編集
                 </button>
                 <button key={todo.id} onClick={() => this.delete(todo)}>
