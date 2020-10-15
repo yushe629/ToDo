@@ -27,6 +27,7 @@ class CreateTodoField extends React.Component<{
               task: this.state.inputData,
               complete: false,
             });
+            this.setState({ inputData: "" });
           }}
         >
           追加
