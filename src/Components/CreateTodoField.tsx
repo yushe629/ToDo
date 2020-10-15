@@ -7,6 +7,7 @@ class CreateTodoField extends React.Component<{
 }> {
   state = {
     inputData: "",
+    count: 0,
   };
 
   render() {
@@ -20,8 +21,9 @@ class CreateTodoField extends React.Component<{
         />
         <button
           onClick={() => {
+            this.setState({ count: this.state.count++ });
             this.props.onTodoAdd({
-              id: Math.floor(Math.random() * 100),
+              id: this.state.count,
               task: this.state.inputData,
               complete: false,
             });

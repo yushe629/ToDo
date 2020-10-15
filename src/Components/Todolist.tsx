@@ -40,6 +40,7 @@ class TodoList extends React.Component {
             {this.state.todos.map((todo) => (
               <li key={todo.id}>
                 {todo.task}
+                <button>編集</button>
                 <button key={todo.id} onClick={() => this.delete(todo)}>
                   完了
                 </button>
