@@ -26,7 +26,7 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
     return (
         <div className="inner">
         {
-            tasks.length <= 0 ? '登録されたTODOはありません。' :
+            tasks.length <= 0 ? 'Todoを追加してください' :
             <ul className="task-list">
             { tasks.map( task => (
                 <TaskItem
