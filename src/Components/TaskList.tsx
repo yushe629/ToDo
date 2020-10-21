@@ -1,4 +1,5 @@
-import React from 'react'
+import React,{useState} from 'react'
+import EditForm from './editform'
 import TaskItem from './TaskItem'
 import  Todo from './Tasktype'
  
@@ -8,7 +9,8 @@ type Props = {
 }
  
 const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
- 
+
+
     const handleDone = (task: Todo) => {
         setTasks(prev => prev.map(t =>
             t.id === task.id
@@ -22,18 +24,43 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
             t.id !== task.id
         ))
     }
+
+    const handleEdit = (task: Todo) => {
+        setTasks(prev => prev.map(t =>
+            t.id === task.id
+                ? { ...task, editting: !task.editting }
+                :t
+            ))
+        
+    }
+        
+    
+
+    const Edit = (task: Todo) => {
+        setTasks(prev => prev.map(t =>
+            t.id === task.id
+                ? { ...task, editting: !task.editting }
+                :t
+            ))
+        
+    }
  
     return (
         <div className="inner">
         {
             tasks.length <= 0 ? 'Todoを追加してください' :
             <ul className="task-list">
-            { tasks.map( task => (
+                        {tasks.map(task => task.editting
+                            ? <EditForm
+                                Edit={Edit}
+                                task={task}/>
+                            : (
                 <TaskItem
                     key={task.id}
                     task={task}
                     handleDelete={handleDelete}
                     handleDone={handleDone}
+                    handleEdit = {handleEdit}
                 />
             )) }
             </ul>

@@ -21,7 +21,8 @@ const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
         const newTask: Todo = {
             id: count,
             task: inputTitle,
-            complete: false
+            complete: false,
+            editting: false
         }
          
         setTasks([newTask, ...tasks])

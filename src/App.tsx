@@ -9,11 +9,13 @@ const initialState: Todo[] = [
         {
             id: 2,
             task: '2つ目のタスク',
-            complete: false
+            complete: false,
+            editting : false
         },{
             id: 1,
             task: '1つ目のタスク',
-            complete: true
+            complete: true,
+            editting : false
         }
     ]
  
