@@ -1,47 +1,45 @@
-import React from 'react'
-import Todo  from './Tasktype'
+import React, { useState } from 'react'
+import Todo from './Tasktype'
  
 type Props = {
     task:Todo,
     Edit: (task: Todo) => void
 }
 
-class EditForm extends React.Component<Props>{
+const EditForm :React.FC<Props> = ({task,Edit}) => {
 
-  state = {
-    inputData: "",
-  };
+  const [input, setInput] = useState<string>("")
 
-  render() {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value)
+  }
+
+  const handleChange = () => {
+    task.task = input;
+    setInput("")
+
+  }
+
     return (
       <div>
         <input
-          value={this.state.inputData}
-          onChange={(e) => {
-            this.setState({ inputData: e.target.value });
-          }}
+            type="text"
+                        className="input"
+                        value={input}
+                        onChange={handleInputChange}
         />
         <button
-          onClick={() => {
-            this.props.Edit({
-              id: this.props.task.id,
-              task: this.state.inputData,
-              complete: false,
-              editting:false
-            });
-          }}
+          onClick={() => {handleChange}}
         >
                 変更
         </button>
             <button
-                onClick={() => {}}>
+                onClick={() => {task.editting = false}}>
                 キャンセル
             </button>
       </div>
     );
   }
 
-
-}
 
 export default EditForm

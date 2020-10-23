@@ -35,7 +35,6 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
     }
         
     
-
     const Edit = (task: Todo) => {
         setTasks(prev => prev.map(t =>
             t.id === task.id
@@ -50,7 +49,7 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
         {
             tasks.length <= 0 ? 'Todoを追加してください' :
             <ul className="task-list">
-                        {tasks.map(task => task.editting
+            {tasks.map(task => task.editting
                             ? <EditForm
                                 Edit={Edit}
                                 task={task}/>
