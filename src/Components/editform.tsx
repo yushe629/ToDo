@@ -3,10 +3,11 @@ import Todo from './Tasktype'
  
 type Props = {
     task:Todo,
-    Edit: (task: Todo) => void
+    Edit: (task: Todo,input:string) => void,
+    Editcancel:(task:Todo) => void
 }
 
-const EditForm :React.FC<Props> = ({task,Edit}) => {
+const EditForm :React.FC<Props> = ({task,Edit,Editcancel}) => {
 
   const [input, setInput] = useState<string>("")
 
@@ -14,11 +15,6 @@ const EditForm :React.FC<Props> = ({task,Edit}) => {
     setInput(e.target.value)
   }
 
-  const handleChange = () => {
-    task.task = input;
-    setInput("")
-
-  }
 
     return (
       <div>
@@ -29,12 +25,12 @@ const EditForm :React.FC<Props> = ({task,Edit}) => {
                         onChange={handleInputChange}
         />
         <button
-          onClick={() => {handleChange}}
+          onClick={() => {Edit(task,input)}}
         >
                 変更
         </button>
             <button
-                onClick={() => {task.editting = false}}>
+          onClick={() => { Editcancel(task) }}>
                 キャンセル
             </button>
       </div>

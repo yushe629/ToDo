@@ -8,12 +8,12 @@ import Todo from './Components/Tasktype'
 const initialState: Todo[] = [
         {
             id: 2,
-            task: '2つ目のタスク',
+            name: '2つ目のタスク',
             complete: false,
             editting : false
         },{
             id: 1,
-            task: '1つ目のタスク',
+            name: '1つ目のタスク',
             complete: true,
             editting : false
         }
