@@ -1,50 +1,50 @@
-import React, { useState } from 'react'
-import Todo  from './Tasktype'
- 
+import React, { useState } from "react";
+import Todo from "./Tasktype";
+
 type Props = {
-    setTasks: React.Dispatch<React.SetStateAction <Todo[]>>
-    tasks: Todo[]
-}
- 
+  setTasks: React.Dispatch<React.SetStateAction<Todo[]>>;
+  tasks: Todo[];
+};
+
 const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
-    const [ inputTitle, setInputTitle ] = useState<string>('')
-    const [ count, setCount ] = useState<number>(tasks.length + 1)
- 
- 
-    const HandleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputTitle(e.target.value)
-    }
- 
-    const HandleSubmit = () => {
-        setCount(count + 1)
-         
-        const newTask: Todo = {
-            id: count,
-            name: inputTitle,
-            complete: false,
-            editting: false
-        }
-         
-        setTasks([newTask, ...tasks])
-        setInputTitle('')
- 
-    }
- 
-    return (
-        <div>
-            <div className="inputForm">
-                <div className="inner">
-                    <input
-                        type="text"
-                        className="input"
-                        value={inputTitle}
-                        onChange={HandleInputChange}
-                    />
-                    <button onClick={HandleSubmit} className="btn is-primary">追加</button>
-                </div>
-            </div>
+  const [inputTitle, setInputTitle] = useState<string>("");
+  const [count, setCount] = useState<number>(tasks.length + 1);
+
+  const HandleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTitle(e.target.value);
+  };
+
+  const HandleSubmit = () => {
+    setCount(count + 1);
+
+    const newTask: Todo = {
+      id: count,
+      name: inputTitle,
+      complete: false,
+      editting: false,
+    };
+
+    setTasks([newTask, ...tasks]);
+    setInputTitle("");
+  };
+
+  return (
+    <div>
+      <div className="inputForm">
+        <div className="inner">
+          <input
+            type="text"
+            className="input"
+            value={inputTitle}
+            onChange={HandleInputChange}
+          />
+          <button onClick={HandleSubmit} className="btn is-primary">
+            追加
+          </button>
         </div>
-    )
-}
- 
-export default TaskInput
+      </div>
+    </div>
+  );
+};
+
+export default TaskInput;

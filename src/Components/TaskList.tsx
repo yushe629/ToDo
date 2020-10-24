@@ -1,16 +1,16 @@
-import React　from "react";
+import React from "react";
 import EditForm from "./editform";
 import TaskItem from "./TaskItem";
 import Todo from "./Tasktype";
 
 type Props = {
   tasks: Todo[];
-setTasks: React.Dispatch<React.SetStateAction<Todo[]>>;
+  setTasks: React.Dispatch<React.SetStateAction<Todo[]>>;
 };
 
-const TaskList: React.FC<Props> = ({ tasks,setTasks }) => {
+const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
   const handleDone = (task: Todo) => {
-  setTasks((prev) =>
+    setTasks((prev) =>
       prev.map((t) =>
         t.id === task.id ? { ...task, complete: !task.complete } : t
       )
@@ -18,11 +18,11 @@ const TaskList: React.FC<Props> = ({ tasks,setTasks }) => {
   };
 
   const handleDelete = (task: Todo) => {
-  setTasks((prev) => prev.filter((t) => t.id !== task.id));
+    setTasks((prev) => prev.filter((t) => t.id !== task.id));
   };
 
   const handleEdit = (task: Todo) => {
-  setTasks((prev) =>
+    setTasks((prev) =>
       prev.map((t) =>
         t.id === task.id ? { ...task, editting: !task.editting } : t
       )
@@ -30,7 +30,7 @@ const TaskList: React.FC<Props> = ({ tasks,setTasks }) => {
   };
 
   const editTaskName = (task: Todo, input: string) => {
-  setTasks((prev) =>
+    setTasks((prev) =>
       prev.map((t) =>
         t.id === task.id ? { ...task, name: input, editting: false } : t
       )
@@ -38,7 +38,7 @@ const TaskList: React.FC<Props> = ({ tasks,setTasks }) => {
   };
 
   const editCancel = (task: Todo) => {
-  setTasks((prev) =>
+    setTasks((prev) =>
       prev.map((t) => (t.id === task.id ? { ...task, editting: false } : t))
     );
   };
@@ -62,7 +62,7 @@ const TaskList: React.FC<Props> = ({ tasks,setTasks }) => {
                 key={task.id}
                 task={task}
                 handleDelete={handleDelete}
-               handleDone= {handleDone}
+                handleDone={handleDone}
                 handleEdit={handleEdit}
               />
             )
