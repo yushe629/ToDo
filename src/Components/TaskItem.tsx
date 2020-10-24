@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import EditForm from './editform'
+import React　from 'react'
 import Todo  from './Tasktype'
  
 type Props = {
@@ -19,7 +18,7 @@ const TaskItem: React.FC<Props> = ({ task, handleDone, handleDelete, handleEdit}
                     type="checkbox"
                     className="checkbox-input"
                     onClick={() => handleDone(task)}
-                    defaultChecked={task.complete}
+                    checked={task.complete}
                 />
                 <span className="checkbox-label">{ task.name }</span>
             </label>

@@ -11,11 +11,11 @@ const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
     const [ count, setCount ] = useState<number>(tasks.length + 1)
  
  
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const HandleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputTitle(e.target.value)
     }
  
-    const handleSubmit = () => {
+    const HandleSubmit = () => {
         setCount(count + 1)
          
         const newTask: Todo = {
@@ -38,9 +38,9 @@ const TaskInput: React.FC<Props> = ({ setTasks, tasks }) => {
                         type="text"
                         className="input"
                         value={inputTitle}
-                        onChange={handleInputChange}
+                        onChange={HandleInputChange}
                     />
-                    <button onClick={handleSubmit} className="btn is-primary">追加</button>
+                    <button onClick={HandleSubmit} className="btn is-primary">追加</button>
                 </div>
             </div>
         </div>
