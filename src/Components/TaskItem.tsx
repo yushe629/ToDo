@@ -14,7 +14,6 @@ const TaskItem: React.FC<Props> = ({
   handleDelete,
   handleEdit,
 }) => {
-  const [complete, setComplete] = useState(false);
   return (
     <li className={task.complete ? "done" : ""}>
       <label>
@@ -22,10 +21,9 @@ const TaskItem: React.FC<Props> = ({
           type="checkbox"
           className="checkbox-input"
           checked={task.complete}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setComplete(e.target.checked);
-            handleDone(task, complete);
-          }}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleDone(task, e.target.checked)
+          }
         />
         <span className="checkbox-label">{task.name}</span>
       </label>
