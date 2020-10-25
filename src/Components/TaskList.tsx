@@ -9,10 +9,10 @@ type Props = {
 };
 
 const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
-  const handleDone = (task: Todo) => {
+  const handleDone = (task: Todo,complete:boolean) => {
     setTasks((prev) =>
       prev.map((t) =>
-        t.id === task.id ? { ...task, complete: !task.complete } : t
+        t.id === task.id ? { ...task, complete: complete } : t
       )
     );
   };
@@ -49,24 +49,27 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
         "Todoを追加してください"
       ) : (
         <ul className="task-list">
-          {tasks.map((task) =>
-            task.editting ? (
-              <EditForm
-                key={task.id}
-                editTaskName={editTaskName}
-                task={task}
-                editCancel={editCancel}
-              />
-            ) : (
-              <TaskItem
-                key={task.id}
-                task={task}
-                handleDelete={handleDelete}
-                handleDone={handleDone}
-                handleEdit={handleEdit}
-              />
-            )
-          )}
+            {tasks.map((task) => {
+              task.editting ? (
+                <EditForm
+                  key={task.id}
+                  editTaskName={editTaskName}
+                  task={task}
+                  editCancel={editCancel} />
+                
+            
+          
+              ) : (
+                <TaskItem
+                  key={task.id}
+                  task={task}
+                  handleDelete={handleDelete}
+                  handleDone={handleDone}
+                  handleEdit={handleEdit}
+                />
+              )
+            }
+            )})
         </ul>
       )}
     </div>

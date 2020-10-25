@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Todo from "./Tasktype";
 
 type Props = {
   task: Todo;
-  handleDone: (task: Todo) => void;
+  handleDone: (task: Todo, complete: boolean) => void;
   handleDelete: (task: Todo) => void;
   handleEdit: (task: Todo) => void;
 };
@@ -14,14 +14,18 @@ const TaskItem: React.FC<Props> = ({
   handleDelete,
   handleEdit,
 }) => {
+  const [complete, setComplete] = useState(false);
   return (
     <li className={task.complete ? "done" : ""}>
       <label>
         <input
           type="checkbox"
           className="checkbox-input"
-          onClick={() => handleDone(task)}
           checked={task.complete}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setComplete(e.target.checked);
+            handleDone(task, complete);
+          }}
         />
         <span className="checkbox-label">{task.name}</span>
       </label>
