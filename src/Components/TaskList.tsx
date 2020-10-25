@@ -69,7 +69,7 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
                 />
               )
             }
-            )})
+            )}
         </ul>
       )}
     </div>
