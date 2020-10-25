@@ -15,7 +15,7 @@ const EditForm: React.FC<Props> = ({ task, editTaskName, editCancel }) => {
   };
 
   return (
-    <div>
+    <li>
       <input
         type="text"
         className="input"
@@ -36,7 +36,7 @@ const EditForm: React.FC<Props> = ({ task, editTaskName, editCancel }) => {
       >
         キャンセル
       </button>
-    </div>
+    </li>
   );
 };
 
