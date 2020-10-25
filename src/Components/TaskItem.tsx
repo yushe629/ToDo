@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Todo from "./Tasktype";
 
 type Props = {
@@ -15,22 +15,19 @@ const TaskItem: React.FC<Props> = ({
   handleEdit,
 }) => {
   return (
-    <li className={task.complete ? "done" : ""}>
+    <li>
       <label>
         <input
           type="checkbox"
-          className="checkbox-input"
           checked={task.complete}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             handleDone(task, e.target.checked)
           }
         />
-        <span className="checkbox-label">{task.name}</span>
+        <span>{task.name}</span>
       </label>
       <button onClick={() => handleEdit(task)}>編集</button>
-      <button onClick={() => handleDelete(task)} className="btn is-delete">
-        削除
-      </button>
+      <button onClick={() => handleDelete(task)}>削除</button>
     </li>
   );
 };

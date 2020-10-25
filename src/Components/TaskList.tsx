@@ -42,11 +42,11 @@ const TaskList: React.FC<Props> = ({ tasks, setTasks }) => {
   };
 
   return (
-    <div className="inner">
+    <div>
       {tasks.length <= 0 ? (
         "Todoを追加してください"
       ) : (
-        <ul className="task-list">
+        <ul>
           {tasks.map((task) =>
             task.editting ? (
               <EditForm

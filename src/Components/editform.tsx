@@ -16,12 +16,7 @@ const EditForm: React.FC<Props> = ({ task, editTaskName, editCancel }) => {
 
   return (
     <li>
-      <input
-        type="text"
-        className="input"
-        value={input}
-        onChange={handleInputChange}
-      />
+      <input type="text" value={input} onChange={handleInputChange} />
       <button
         onClick={() => {
           editTaskName(task, input);
